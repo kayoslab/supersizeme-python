@@ -8,7 +8,7 @@ import urllib
 from datetime import datetime
 from xml.sax.saxutils import unescape
 
-f = open('chapters/workfile-test.tex', 'w')
+f = open('workfile.tex', 'w')
 def db(hst, usr, pw, dba):
     db = MySQLdb.connect(host=hst, user=usr, passwd=pw, db=dba)
     # you must create a Cursor object. It will let
