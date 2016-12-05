@@ -114,13 +114,13 @@ def bodyCleaning(body, title):
         urllib.urlretrieve(cleanedURL, "images/" + os.path.basename(cleanedURL))
         if os.path.splitext(cleanedURL)[1] != ".gif":
             escapedURL = cleanedURL.replace("_","\_").replace("%","\%")
-            cleanedBody = re.sub('<img src="{}([^"]+)"[{}\s]* />', "\n\n \\ begin{figure}[ht]\\centering\\href{" + escapedURL + "}{\\includegraphics[width=1.0 \\ textwidth]{" + "images/" + os.path.basename(escapedURL.replace("%","\%")) + "}}\\caption{" + title + "}\\end{figure}\n\n", body, 1)
+            cleanedBody = re.sub('<img src="{}([^"]+)"[{}\s]* />', "\n\n \\begin{figure}[ht]\\centering\\href{" + escapedURL + "}{\\includegraphics[width=1.0 \\textwidth]{" + "images/" + os.path.basename(escapedURL.replace("%","\%")) + "}}\\caption{" + title + "}\\end{figure}\n\n", body, 1)
 
     ahref = re.compile('<a href="([^"]+)"')
     for tag in ahref.finditer(cleanedBody):
         cleanedURL = tag.group(1).replace('{}','')
         print title + ": " + cleanedURL
-        cleanedBody = cleanedBody + "\n \\\\ \\ href{" + cleanedURL + "}{Link}"
+        cleanedBody = cleanedBody + "\n \\\\ \\href{" + cleanedURL + "}{Link}"
 
     cleanedBody = re.sub('<[^<]+?>', '', cleanedBody)
     html_escape_table = {
